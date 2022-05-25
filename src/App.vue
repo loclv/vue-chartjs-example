@@ -1,14 +1,13 @@
 <template>
   <div class="chart-container">
-  <LineChart />
+    <LineChart />
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .chart-container {
-  width: 800px;
+  width: 88%;
 }
 </style>

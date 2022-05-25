@@ -73,18 +73,17 @@ export default defineComponent({
     const chartData = {
       labels: [
         'January;2015',
-        'February;2015',
-        'March;2015',
-        'April;2015',
-        'May;2015',
-        'June;2015',
-        'July;2015'
+        'February;2016',
+        'March;2017',
+        'April;2018',
+        'May;2019',
+        'June;2020',
+        'July;2021'
       ],
       datasets: [
         {
           label: 'Data One',
           backgroundColor: '#f87979',
-          xAxisID: 'xAxis1',
           data: [40, 39, 10, 40, 39, 80, 40]
         }
       ]
@@ -98,9 +97,7 @@ export default defineComponent({
           ticks: {
             callback: function (label: string) {
               const realLabel: string = this.getLabelForValue(label)
-              console.log('🚀 ~ realLabel', realLabel)
               const month = realLabel.split(';')[0]
-              const year = realLabel.split(';')[1]
               return month
             }
           } as {
@@ -108,6 +105,7 @@ export default defineComponent({
             getLabelForValue: (label: string) => string
           }
         },
+
         xAxis2: {
           type: 'category',
           grid: {
@@ -116,14 +114,8 @@ export default defineComponent({
           ticks: {
             callback: function (label: string) {
               const realLabel: string = this.getLabelForValue(label) as string
-
-              const month = realLabel.split(';')[0]
               const year = realLabel.split(';')[1]
-              if (month === 'February') {
-                return year
-              } else {
-                return ''
-              }
+              return year
             }
           } as {
             callback: () => string
