@@ -1,6 +1,14 @@
 <template>
-  <Line :chart-options="chartOptions" :chart-data="chartData" :chart-id="chartId" :plugins="plugins"
-    :css-classes="cssClasses" :styles="styles" :width="width" :height="height" />
+  <Line
+    :chart-options="chartOptions"
+    :chart-data="chartData"
+    :chart-id="chartId"
+    :plugins="plugins"
+    :css-classes="cssClasses"
+    :styles="styles"
+    :width="width"
+    :height="height"
+  />
 </template>
 
 <script lang="ts">
@@ -54,7 +62,7 @@ export default defineComponent({
     styles: {
       type: Object as PropType<Partial<CSSStyleDeclaration>>,
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      default: () => { }
+      default: () => {}
     },
     plugins: {
       type: Array as PropType<Plugin<'line'>[]>,
@@ -63,7 +71,15 @@ export default defineComponent({
   },
   setup(props) {
     const chartData = {
-      labels: ['January;2015', 'February;2015', 'March;2015', 'April;2015', 'May;2015', 'June;2015', 'July;2015'],
+      labels: [
+        'January;2015',
+        'February;2015',
+        'March;2015',
+        'April;2015',
+        'May;2015',
+        'June;2015',
+        'July;2015'
+      ],
       datasets: [
         {
           label: 'Data One',
@@ -77,6 +93,47 @@ export default defineComponent({
     const chartOptions = {
       responsive: true,
       maintainAspectRatio: false,
+      scales: {
+        x: {
+          ticks: {
+            callback: function (label: string) {
+              const realLabel: string = this.getLabelForValue(label)
+              console.log('🚀 ~ realLabel', realLabel)
+              const month = realLabel.split(';')[0]
+              const year = realLabel.split(';')[1]
+              return month
+            }
+          } as {
+            callback: () => string
+            getLabelForValue: (label: string) => string
+          }
+        },
+        xAxis2: {
+          type: 'category',
+          grid: {
+            drawOnChartArea: false // only want the grid lines for one axis to show up
+          },
+          ticks: {
+            callback: function (label: string) {
+              const realLabel: string = this.getLabelForValue(label) as string
+
+              const month = realLabel.split(';')[0]
+              const year = realLabel.split(';')[1]
+              if (month === 'February') {
+                return year
+              } else {
+                return ''
+              }
+            }
+          } as {
+            callback: () => string
+            getLabelForValue: (label: string) => string
+          }
+        },
+        y: {
+          beginAtZero: true
+        }
+      }
     }
 
     return () =>
