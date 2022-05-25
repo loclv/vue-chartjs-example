@@ -2,7 +2,7 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
-This example using [Element Plus](https://element-plus.org/en-US/) - a Vue 3 based component library for designers and developers.
+This example using [vue-chartjs](https://vue-chartjs.org/) - Easy and beautiful charts with Chart.js and Vue.js.
 
 ## Recommended IDE Setup
 

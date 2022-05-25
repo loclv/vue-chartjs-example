@@ -1,11 +1,14 @@
-<!--
-Say Hello World with Vue!
--->
+<template>
+  <div class="chart-container">
+  <LineChart />
+  </div>
+</template>
 
 <script setup lang="ts">
-const message = 'Hello World!'
 </script>
 
-<template>
-  <h1>{{ message }}</h1>
-</template>
+<style scoped>
+.chart-container {
+  width: 800px;
+}
+</style>
