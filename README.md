@@ -1,4 +1,4 @@
-# vue-element-plus-example
+# vue 3 - vue-chartjs - example
 
 This template should help get you started developing with Vue 3 in Vite.
 
